@@ -28,22 +28,6 @@ pipeline {
       }
     }
 
-    stage('Sonarqube') {
-      environment {
-        scannerHome = 'SonarQubeScanner'
-      }
-      steps {
-        withSonarQubeEnv('sonarqube'){
-          sh './gradlew sonarqube'
-        }
-
-        timeout(time: 10, unit: 'MINUTES') {
-          waitForQualityGate true
-        }
-
-      }
-    }
-
     stage('Code Analysis') {
       parallel {
         stage('Code Analysis') {
