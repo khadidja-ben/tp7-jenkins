@@ -65,6 +65,9 @@ pipeline {
                             currentBuild.result = 'FAILURE'
                             error('Pipeline aborted due to quality gate failure.')
                     }
+                }
+            }
+ }
 
     stage('Deployment') {
       steps {
