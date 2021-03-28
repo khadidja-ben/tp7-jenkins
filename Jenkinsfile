@@ -33,7 +33,7 @@ pipeline {
         scannerHome = 'SonarQubeScanner'
       }
       steps {
-        withSonarQubeEnv('sonarqube')
+        withSonarQubeEnv('sonarqube'){
           sh './gradlew sonarqube'
         }
 
