@@ -33,8 +33,8 @@ pipeline {
         scannerHome = 'SonarQubeScanner'
       }
       steps {
-        withSonarQubeEnv('sonarqube') {
-          sh 'C:/sonar-scanner/bin/sonar-scanner'
+        withSonarQubeEnv() {
+          sh './gradlew sonarqube'
         }
 
         timeout(time: 10, unit: 'MINUTES') {
