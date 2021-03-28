@@ -53,7 +53,7 @@ pipeline {
 
     stage('Slack Notification') {
       steps {
-        slackSend(attachments: 'hey', blocks: 'hellooooo', baseUrl: 'https://hooks.slack.com/services/', channel: 'tp-jenkins', message: 'new build has been added', token: 'T01NG7VH880/B01S6APL8T1/SOREG7NXa4Ys3w3vcxBxXOBd', username: 'khadidja', teamDomain: 'Esi')
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', channel: 'tp-jenkins', message: 'new build has been added', token: 'T01NG7VH880/B01S6APL8T1/SOREG7NXa4Ys3w3vcxBxXOBd', username: 'khadidja', teamDomain: 'Esi')
       }
     }
 
