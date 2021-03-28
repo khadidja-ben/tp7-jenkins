@@ -59,5 +59,11 @@ pipeline {
       }
     }
 
+    stage('Archive Formated Junit') {
+      steps {
+        junit 'build/test-results/test/*.xml'
+      }
+    }
+
   }
 }
