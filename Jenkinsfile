@@ -32,7 +32,10 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
-            withSonarQubeEnv(installationName: 'SonarQubeScanner', envOnly: true)
+            withSonarQubeEnv(installationName: 'SonarQubeScanner', envOnly: true) {
+              bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
+            }
+
             waitForQualityGate true
           }
         }
