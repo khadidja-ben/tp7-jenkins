@@ -32,7 +32,7 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
-            withSonarQubeEnv 'SonarQubeScanner'
+            withSonarQubeEnv(installationName: 'SonarQubeScanner', envOnly: true)
             waitForQualityGate true
           }
         }
