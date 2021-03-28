@@ -33,6 +33,8 @@ pipeline {
         stage('Code Analysis') {
           steps {
             bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
+            waitForQualityGate abortPipeline: true
+
           }
         }
 
@@ -44,30 +46,7 @@ pipeline {
 
       }
     }
-
-    stage('Sonarqube Analysis') {
-      environment {
-        scannerHome = 'Sonar scanner'
-      }
-      steps {
-        withSonarQubeEnv('Sonarserver') {
-          sh "${scannerHome}/bin/sonar-scanner"
-        }
-
-        sleep(time: 30000, unit: 'MILLISECONDS')
-        script {
-          sh "curl -u username:password -X GET -H 'Accept: application/json' https://alm.accenture.com/sonar/api/qualitygates/project_status?projectKey=adop:SDSPDVCR:baggagetracking > status.json"
-          def json = readJSON file:'status.json'
-          echo "${json.projectStatus.status}"
-          if ("${json.projectStatus.status}" == "ERROR") {
-            currentBuild.result = 'FAILURE'
-            error('Pipeline aborted due to quality gate failure.')
-          }
-        }
-
-      }
-    }
-
+    
     stage('Deployment') {
       steps {
         bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle publish'
