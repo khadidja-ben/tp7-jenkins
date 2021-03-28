@@ -33,7 +33,6 @@ pipeline {
         stage('Code Analysis') {
           steps {
             bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
-            waitForQualityGate true
           }
         }
 
@@ -45,6 +44,24 @@ pipeline {
 
       }
     }
+    
+    stage('Clone sources') {
+            steps {
+                git branch: 'bad-code', url: 'https://github.com/tkgregory/sonarqube-jacoco-code-coverage.git'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "./gradlew sonarqube"
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
 
     stage('Deployment') {
       steps {
