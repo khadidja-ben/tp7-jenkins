@@ -8,8 +8,17 @@ pipeline {
         archiveArtifacts 'build/docs/javadoc/*'
         archiveArtifacts 'build/reports/tests'
       }
-    }
-
+      post {
+        always {
+          echo " Build stage complete "
+        }
+        failure {
+          echo "Build failed"
+        }
+        success {
+          echo "Build succeeded"
+        }
+      }
     stage('Mail Notification') {
       steps {
         mail(cc: 'hk_bennamane@esi.dz', subject: 'build', body: 'new build')
