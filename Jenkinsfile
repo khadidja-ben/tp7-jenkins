@@ -33,7 +33,7 @@ pipeline {
         stage('Code Analysis') {
           steps {
             withSonarQubeEnv('sonar') {
-              sh 'C:\\sonar-scanner\\bin\\sonar-scanner'
+               bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
             }
             
             def qualitygate = waitForQualityGate()
