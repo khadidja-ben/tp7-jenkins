@@ -44,19 +44,21 @@ pipeline {
 
       }
     }
-    
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh "./gradlew sonarqube"
-                }
-            }
+
+    stage('SonarQube analysis') {
+      steps {
+        withSonarQubeEnv('SonarQube') {
+          sh './gradlew sonarqube'
         }
-        stage("Quality gate") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
+
+      }
+    }
+
+    stage('Quality gate') {
+      steps {
+        waitForQualityGate true
+      }
+    }
 
     stage('Deployment') {
       steps {
