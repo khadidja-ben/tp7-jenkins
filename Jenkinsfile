@@ -33,7 +33,7 @@ pipeline {
         stage('Code Analysis') {
           steps {
             withSonarQubeEnv('sonar') {
-              sh 'C:\sonar-scanner\bin\sonar-scanner'
+              sh 'C:\\sonar-scanner\\bin\\sonar-scanner'
             }
 
            
