@@ -53,7 +53,7 @@ pipeline {
 
     stage('Slack Notification') {
       steps {
-        slackSend()
+        slackSend(attachments: 'hey', blocks: 'hellooooo')
       }
     }
 
