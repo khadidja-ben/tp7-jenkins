@@ -19,7 +19,7 @@ pipeline {
       steps {
         bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle build'
         bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle javadoc'
-        archiveArtifacts 'build\\docs\\javadoc\\*'
+        archiveArtifacts 'C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\tp7-jenkins_master\\build\\docs\\javadoc\\*'
         archiveArtifacts 'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/tp7-jenkins_master/build/reports/tests'
       }
     }
