@@ -24,6 +24,5 @@ pipeline {
         mail(cc: 'hk_bennamane@esi.dz', subject: 'build', body: 'new build')
       }
     }
-
   }
 }
