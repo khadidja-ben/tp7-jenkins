@@ -45,11 +45,6 @@ pipeline {
       }
     }
     
-    stage('Clone sources') {
-            steps {
-                git branch: 'bad-code', url: 'https://github.com/tkgregory/sonarqube-jacoco-code-coverage.git'
-            }
-        }
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
