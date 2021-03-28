@@ -39,7 +39,7 @@ pipeline {
               echo "test SonarQube"
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-                error "pipline aborted due to quality gate failure :$(qg.status)"
+                error "pipline aborted due to quality gate failure :${qg.status}"
                 echo "jjjjjjj"
               }
             }
