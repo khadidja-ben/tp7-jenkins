@@ -35,11 +35,6 @@ pipeline {
             withSonarQubeEnv('sonar') {
                bat 'D:\\SCHOOL\\SIL2\\S1\\done\\Outils\\TPs\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
             }
-            
-            def qualitygate = waitForQualityGate()
-            if (qualitygate.status != "OK") {
-              error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-            }
           }
         }
 
